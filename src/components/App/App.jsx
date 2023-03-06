@@ -1,3 +1,12 @@
-export const App = () => {
-  return <div>Hello</div>;
-};
+import { Component } from 'react';
+
+export class App extends Component {
+  state = {
+    contacts: [],
+    name: '',
+  };
+
+  render() {
+    return <div>Hello</div>;
+  }
+}
