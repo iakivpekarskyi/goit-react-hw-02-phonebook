@@ -8,23 +8,23 @@ import {
   FormBtn,
 } from './ContactForm.styled';
 
-const FormSchema = Yup.object().shape({
+const AddContactSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Too Short!')
-    .max(6, 'Too Long!')
+    .max(5, 'Too Long!')
     .required('Required'),
-  number: Yup.number()
+  number: Yup.string()
     .min(2, 'Too Short!')
-    .max(10, 'Too Long!')
+    .max(5, 'Too Long!')
     .required('Required'),
 });
 
-export const ContactForm = () => {
-  const initialValues = {
-    name: '',
-    number: '',
-  };
+const initialValues = {
+  name: '',
+  number: '',
+};
 
+export const ContactForm = () => {
   const handleSubmit = (values, { resetForm }) => {
     console.log(values);
     resetForm();
@@ -33,7 +33,7 @@ export const ContactForm = () => {
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={FormSchema}
+      validationSchema={AddContactSchema}
       onSubmit={handleSubmit}
     >
       <FormikForm autoComplete="off">
