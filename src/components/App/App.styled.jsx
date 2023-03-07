@@ -5,12 +5,14 @@ export const Layout = styled.div`
   margin-top: 200px;
   margin-left: auto;
   margin-right: auto;
-  padding-bottom: 30px;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #5d5d5d;
+  background-color: #ffffff;
   border-radius: 15px;
-  color: #ffffff;
+  color: #787878;
+
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 `;
