@@ -1,5 +1,6 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { nanoid } from 'nanoid';
 import {
   FormikForm,
   Label,
@@ -8,14 +9,14 @@ import {
   FormBtn,
 } from './ContactForm.styled';
 
-const AddContactSchema = Yup.object().shape({
+const validationSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Too Short!')
-    .max(5, 'Too Long!')
+    .max(10, 'Too Long!')
     .required('Required'),
   number: Yup.string()
     .min(2, 'Too Short!')
-    .max(5, 'Too Long!')
+    .max(15, 'Too Long!')
     .required('Required'),
 });
 
@@ -24,16 +25,23 @@ const initialValues = {
   number: '',
 };
 
-export const ContactForm = () => {
+export const ContactForm = ({ onAddContact }) => {
   const handleSubmit = (values, { resetForm }) => {
     console.log(values);
+
+    const newContact = {
+      id: nanoid(),
+      ...values,
+    };
+    onAddContact(newContact);
+
     resetForm();
   };
 
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={AddContactSchema}
+      validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
       <FormikForm autoComplete="off">

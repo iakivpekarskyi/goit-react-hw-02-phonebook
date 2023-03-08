@@ -4,6 +4,7 @@ import { ContactForm } from '../ContactForm/ContactForm';
 import { ContactList } from '../ContactList/ContactList';
 import { Filter } from '../Filter/Filter';
 import { Layout } from './App.styled';
+import { nanoid } from 'nanoid';
 
 export class App extends Component {
   state = {
@@ -16,16 +17,35 @@ export class App extends Component {
     filter: '',
   };
 
+  addContact = ({ name, number }) => {
+    const newContact = {
+      id: nanoid(),
+      name,
+      number,
+    };
+
+    this.state.contacts.map(contact => contact.name).includes(name)
+      ? alert(`${name} is already in contacts list`)
+      : this.setState(prevState => ({
+          contacts: [newContact, ...prevState.contacts],
+        }));
+  };
+
+  onRemove = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
+  };
+
   render() {
     return (
       <Layout>
         <GlobalStyles />
         <h1>Phonebook</h1>
-        <ContactForm />
-
+        <ContactForm onAddContact={this.addContact} />
         <h2>Contacts</h2>
+        <ContactList contacts={this.state.contacts} onRemove={this.onRemove} />
         {/* <Filter /> */}
-        {/* <ContactList /> */}
       </Layout>
     );
   }
