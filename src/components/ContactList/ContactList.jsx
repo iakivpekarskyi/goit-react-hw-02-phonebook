@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { ContactListItem } from 'components/ContactListItem/ContactListItem';
 import { ContactListWrap } from './ContactList.styled';
 
-export const ContactList = ({ contacts, onRemove }) => {
+export const ContactList = ({ contacts, deleteContact }) => {
   return (
     <ContactListWrap>
       {contacts.map(({ id, name, number }) => {
@@ -12,7 +12,7 @@ export const ContactList = ({ contacts, onRemove }) => {
             name={name}
             number={number}
             id={id}
-            onRemove={onRemove}
+            deleteContact={deleteContact}
           />
         );
       })}

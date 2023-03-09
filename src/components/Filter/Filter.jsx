@@ -1,15 +1,21 @@
 import PropTypes from 'prop-types';
-import { Component } from 'react';
+import { FilterWrap } from './Filter.styled';
+import { FilterInput } from './Filter.styled';
 
-export class Filter extends Component {
-  state = {
-    contacts: [],
-    filter: '',
-    name: '',
-    number: '',
-  };
+export const Filter = ({ filterValue, onFilterChange }) => {
+  return (
+    <FilterWrap>
+      <FilterInput
+        type="text"
+        placeholder="Search for contact"
+        value={filterValue}
+        onChange={onFilterChange}
+      ></FilterInput>
+    </FilterWrap>
+  );
+};
 
-  render() {
-    return <div>Hello</div>;
-  }
-}
+Filter.protoTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
