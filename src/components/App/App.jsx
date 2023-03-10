@@ -21,10 +21,9 @@ export class App extends Component {
     const newContact = {
       id: nanoid(),
       name,
-      number,
     };
 
-    this.state.contacts.map(contact => contact.name).includes(name)
+    this.state.contacts.find(contact => contact.name === newContact.name)
       ? alert(`${name} is already in contacts list`)
       : this.setState(prevState => ({
           contacts: [newContact, ...prevState.contacts],
