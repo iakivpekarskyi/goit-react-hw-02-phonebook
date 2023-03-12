@@ -62,14 +62,14 @@ export class App extends Component {
     this.setState({ filter: event.currentTarget.value });
   };
 
-  // updateContactsList = () => {
-  //   const { contacts, filter } = this.state;
-  //   const normalizedFilter = filter.toLowerCase();
-  //   const filterContacts = contacts.filter(contact =>
-  //     contact.name.toLowerCase().includes(normalizedFilter)
-  //   );
-  //   return filterContacts;
-  // };
+  updateContactsList = () => {
+    const { contacts, filter } = this.state;
+    const normalizedFilter = filter.toLowerCase();
+    const filterContacts = contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
+    return filterContacts;
+  };
 
   toggleModal1 = () => {
     this.setState(({ showModal }) => ({ showModal: !showModal }));
@@ -80,12 +80,12 @@ export class App extends Component {
   };
 
   render() {
-    // const updatedContacts = this.updateContactsList();
+    const updatedContacts = this.updateContactsList();
     const { filter, showModal, showForm } = this.state;
 
     return (
       <Layout>
-        <ErrorBoundary fallback="Ooops">
+        <ErrorBoundary fallback="Sorry somthing went wrong">
           <GlobalStyles />s
           <button type="button" onClick={this.toggleModal2}>
             Add Contact
@@ -119,7 +119,7 @@ export class App extends Component {
           <h2>Contacts</h2>
           <Filter value={filter} onFilterChange={this.filterContacts} />
           <ContactList
-            // contacts={updatedContacts}
+            contacts={updatedContacts}
             deleteContact={this.deleteContact}
           />
         </ErrorBoundary>
