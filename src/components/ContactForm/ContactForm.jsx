@@ -1,4 +1,5 @@
 import { Formik } from 'formik';
+
 import * as Yup from 'yup';
 import { nanoid } from 'nanoid';
 import {
@@ -8,6 +9,8 @@ import {
   ErrorText,
   FormBtn,
 } from './ContactForm.styled';
+
+import { MdOutlinePersonAddAlt } from 'react-icons/md';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -37,7 +40,6 @@ export const ContactForm = ({ onAddContact }) => {
 
     resetForm();
   };
-
   return (
     <Formik
       initialValues={initialValues}
@@ -55,7 +57,10 @@ export const ContactForm = ({ onAddContact }) => {
           <FormikField type="tel" name="number" />
           <ErrorText name="number" component="p" />
         </Label>
-        <FormBtn type="submit">Add contact</FormBtn>
+
+        <FormBtn type="submit">
+          <MdOutlinePersonAddAlt />
+        </FormBtn>
       </FormikForm>
     </Formik>
   );

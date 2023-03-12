@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const ListItem = styled.li`
-  width: 350px;
   display: flex;
-  justify-content: space-between;
-
+  justify-content: flex-start;
+  flex-direction: row;
+  width: 350px;
   margin-bottom: 10px;
 `;
 
@@ -14,7 +14,8 @@ export const Text = styled.p`
 
 export const Button = styled.button`
   background-color: #ffffff;
-  font-size: 14px;
+
+  font-size: 24px;
   color: #aeaeae;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;

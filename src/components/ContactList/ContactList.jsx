@@ -6,6 +6,7 @@ export const ContactList = ({ contacts, deleteContact }) => {
   return (
     <ContactListWrap>
       {contacts.map(({ id, name, number }) => {
+        console.log(contacts);
         return (
           <ContactListItem
             key={id}
@@ -28,5 +29,5 @@ ContactList.propTypes = {
       number: PropTypes.string.isRequired,
     })
   ),
-  onRemove: PropTypes.func.isRequired,
+  deleteContact: PropTypes.func.isRequired,
 };
